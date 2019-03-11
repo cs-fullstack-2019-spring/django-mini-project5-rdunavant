@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Recipes</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'App/style.css' %}">
+</head>
+<div>
+<body>
+<header>
+<h1>
+    {% block header %}
+    {% if user.is_authenticated %}
+    All Recipes {{recipe.recipeName}}
+    {% else %}
+    Welcome to RecipeListers!
+    {% endif %}
+    {% endblock header %}
+</h1>
+</header>
+</div>
+{% block content %}
+{% if user.is_authenticated %}
+<p><a href="{% url 'addRecipe' %}">AddRecipe</a></p>
+<p><a href="{% url 'pictureDeats' %}">Picture</a></p>
+<p><a href="{% url 'recipeDetails' %}">Name</a></p>
+Description
+Date
+Creator
+</body>
+</html>

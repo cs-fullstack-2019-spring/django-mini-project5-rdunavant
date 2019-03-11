@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Recipe</title>
+</head>
+<body>
+<h1>
+    {% block header %}
+    New Recipe
+    {% endblock %}
+</h1>
+Want to add a new recipe {{recipe.recipeName}}
+<p><a href="{% url 'index' %}">Home</a></p>
+</body>
+</html>

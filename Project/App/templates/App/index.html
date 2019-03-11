@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<div lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'App/style.css' %}">
+</head>
+
+<div>
+<header>
+<h1>
+    {% block header %}
+    {% if user.is_authenticated %}
+    Welcome {{user.username}}
+    {% endif %}
+    {% endblock header %}
+</h1>
+</header>
+</div>
+{% block content %}
+{% if user.is_authenticated %}
+<p><a href="{% url 'logout' %}">Logout</a></p>
+<p><a href="{% url 'editRecipe' %}">Edit Recipe</a></p>
+<p><a href="{% url 'allRecipe' %}">All Recipes</a></p>
+{% if recipeList %}
+<table border="2">
+    <tr>
+        <th>Recipe</th>
+        <th>Edit recipe</th>
+        <th>Delete recipe</th>
+    </tr>
+    {% for recipe in recipeList %}
+    <tr>
+        <td><a href="">{{ recipe }}</a></td>
+        <td><a href="{% url 'edit' recipe.id %}">Edit</a></td>
+        <td><a href="{% url 'delete' recipe.id %}">Delete</a></td>
+    </tr>
+    {% for recipe in recipeList %}
+    <tr>
+        <td><a href="">{{ recipe }}</a></td>
+        <td><a href="{% url 'edit' recipe.id %}">Edit</a></td>
+        <td><a href="{% url 'delete' recipe.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endfor %}
+{% endif %}
+{% else %}
+<p><a href="{% url 'logout' %}">Logout</a></p>
+<p><a href="{% url 'editRecipe' %}">Edit Recipe</a></p>
+{% endif %}
+{% endblock content %}
+</div>
+Picture
+Name
+Description
+Date
+Creator
+</body>
+</html>
